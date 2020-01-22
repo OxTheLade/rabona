@@ -10,18 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/', function () {
+//    return view('index');
+//})->name('index');
+
 
 Auth::routes();
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/post/{id}', ['as' => 'article', 'uses' => 'AdminPostsController@post']);
 
-Route::get('/', 'HomeController@index');
+//Route::get('/', 'HomeController@index');
 
+Route::group(['middleware' => 'admin'], function () {
 
+    Route::get('/admin', 'AdminController@index')->name('admin.index');
 
-Route::group(['middleware' => 'admin'], function (){
+    Route::resource('admin/posts', 'AdminPostsController', ['names' => [
 
-    Route::get('/admin', 'AdminController@index');
+        'index' => 'posts.index'
+
+    ]]);
+
 });
-
-Route::get('/post', function (){
-    view('article');
-})->name('article');

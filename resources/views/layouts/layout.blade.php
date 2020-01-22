@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{request()->is('/') ? 'active' : ''}}">
-                    <a href="#" class="nav-link">Forside</a>
+                    <a href="{{route('index')}}" class="nav-link">Forside</a>
                 </li>
                 <li class="nav-item {{request()->is('nyheder') ? 'active' : ''}}">
                     <a href="#" class="nav-link">Nyheder</a>

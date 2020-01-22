@@ -11,10 +11,10 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <h1>Inter har endelig vundet CL!</h1>
-                            <small class="text-muted"><i class="fas fa-pencil-alt"></i> Af Mikail Kocak</small>
+                            <h1>{{$post->title}}</h1>
+                            <small class="text-muted"><i class="fas fa-pencil-alt"></i> {{$post->user->name}}</small>
                             <div class="mr-auto">
-                                <small class="text-muted mr-auto"><i class="far fa-clock"></i> Posted 20 minutes ago
+                                <small class="text-muted mr-auto"><i class="far fa-clock"></i> Posted {{$post->created_at->diffForHumans()}}
                                 </small>
                             </div>
                         </div>
@@ -23,36 +23,7 @@
                                  class="card-img-top img-fluid">
                             <hr>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ducimus ipsa natus
-                                repudiandae rerum. Ab adipisci dolorem enim fugit id, laboriosam magnam molestias, non
-                                repellendus veniam voluptatibus voluptatum. Earum, facilis?
-                            </p>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda beatae
-                                consequuntur corporis cupiditate debitis dicta eligendi eveniet ex fugiat fugit itaque
-                                minus modi molestiae nesciunt nihil nisi nobis odio officiis omnis quae quas quis quo
-                                reiciendis rerum sint vitae?
-                            </p>
-
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda beatae
-                                consequuntur corporis cupiditate debitis dicta eligendi eveniet ex fugiat fugit itaque
-                                minus modi molestiae nesciunt nihil nisi nobis odio officiis omnis quae quas quis quo
-                                reiciendis rerum sint vitae?
-                            </p>
-
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda beatae
-                                consequuntur corporis cupiditate debitis dicta eligendi eveniet ex fugiat fugit itaque
-                                minus modi molestiae nesciunt nihil nisi nobis odio officiis omnis quae quas quis quo
-                                reiciendis rerum sint vitae?
-                            </p>
-
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, assumenda beatae
-                                consequuntur corporis cupiditate debitis dicta eligendi eveniet ex fugiat fugit itaque
-                                minus modi molestiae nesciunt nihil nisi nobis odio officiis omnis quae quas quis quo
-                                reiciendis rerum sint vitae?
+                                {!! $post->body !!}
                             </p>
                         </div>
                     </div>

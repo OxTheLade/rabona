@@ -23,18 +23,18 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item px-2">
-                    <a href="index.php" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="{{route('admin.index')}}" class="nav-link {{ request()->route()->getName() === 'admin.index' ? 'active'  : '' }} "><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                 <li class="nav-item px-2 dropdown">
-                    <a href="posts.html" class="nav-link dropdown-toggle" data-toggle="dropdown">Posts</a>
+                    <a href="posts" class="nav-link dropdown-toggle {{request()->route()->getName() === 'posts.index' ? 'active' : ''}} {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}" data-toggle="dropdown">Posts</a>
                     <div class="dropdown-menu">
-                        <a href="add_post.php" class="dropdown-item">
+                        <a href="{{route('posts.index')}}" class="dropdown-item {{request()->route()->getName() === 'posts.index' ? 'active' : ''}}">
                             <i class="far fa-newspaper"></i> All Post
                         </a>
-                        <a href="add_post.php" class="dropdown-item">
+                        <a href="{{route('posts.create')}}" class="dropdown-item {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}">
                             <i class="fas fa-pencil-alt"></i> Add Post
                         </a>
-                        <a href="edit_post.php" class="dropdown-item">
+                        <a href="edit_post.php" class="dropdown-item {{request()->route()->getName() === 'posts.edit' ? 'active' : ''}}">
                             <i class="fas fa-edit"></i> Edit Post
                         </a>
                     </div>
@@ -63,9 +63,14 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="login.html" class="nav-link">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
                         <i class="fas fa-user-times"></i> Logout
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>

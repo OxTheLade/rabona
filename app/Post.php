@@ -2,11 +2,25 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
     //
+    use Sluggable;
+    use SluggableScopeHelpers;
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
     protected $fillable = [
         'title',
         'body',
@@ -26,5 +40,6 @@ class Post extends Model
         return $this->belongsTo('App\Photo');
 
     }
+
 
 }

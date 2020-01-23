@@ -2,22 +2,27 @@
 
 
 
-
-
-
-
 @section('content')
 
     @include('admin.includes.ckeditor')
 
+    <section id="edit_post">
     <div class="container">
         <div class="row justify-content-center mt-3">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Post Photo</h1>
+                    </div>
+                    <img src="{{$post->photo->path}}" alt="" class="img-fluid card-img-top">
+                </div>
+            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header mb-2">
-                        <h1>Create Post</h1>
+                        <h1>Update Post</h1>
                     </div>
-                {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
+                {!! Form::model($post, ['method'=>'PATCH', 'action'=>['AdminPostsController@update', $post->id], 'files'=>true]) !!}
 
                 @csrf <!-- {{ csrf_field() }} -->
 
@@ -50,15 +55,33 @@
 
                     </div>
 
-                    <div class="form-group">
-                        {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
-                    </div>
 
+                        <div class="form-group">
+                            {!! Form::submit('Update Post', ['class'=>'btn btn-primary col-md-6']) !!}
+                        </div>
                     {!! Form::close() !!}
+
+
+                    {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
+
+                    @csrf <!-- {{ csrf_field() }} -->
+
+
+                        <div class="form-group">
+
+                            {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-md-6 float-right']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
                 </div>
+
             </div>
         </div>
     </div>
+    </section>
+
+
+
 
 
 

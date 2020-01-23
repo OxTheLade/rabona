@@ -14,12 +14,12 @@
                             <h1>{{$post->title}}</h1>
                             <small class="text-muted"><i class="fas fa-pencil-alt"></i> {{$post->user->name}}</small>
                             <div class="mr-auto">
-                                <small class="text-muted mr-auto"><i class="far fa-clock"></i> Posted {{$post->created_at->diffForHumans()}}
+                                <small class="text-muted mr-auto"><i class="far fa-clock"></i> Tilføjede {{$post->created_at->isoFormat('LLLL')}}
                                 </small>
                             </div>
                         </div>
                         <div class="card-body">
-                            <img width="400" height="370" src="{{asset('img/1491602_w1.jpg')}}" alt=""
+                            <img src="{{$post->photo->path}}" alt=""
                                  class="card-img-top img-fluid">
                             <hr>
                             <p class="card-text">

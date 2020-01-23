@@ -11,17 +11,17 @@
                         <h1>De Seneste Nyheder</h1>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-2">
                             @foreach($posts as $post)
                             <div class="card">
-                                <a href="{{route('article', $post->id)}}">
-                                    <img width="250" height="190" src="{{asset('img/1491602_w1.jpg')}}" alt=""
+                                <a href="{{route('article', $post->slug)}}">
+                                    <img width="250" height="190" src="{{$post->photo->path}}" alt=""
                                          class="card-img-top">
                                     <div class="card-body">
                                         <h4 class="card-title">{{$post->title}}</h4>
                                 </a>
 
-                                <small class="text-muted"><i class="far fa-clock"></i> Posted {{$post->created_at->diffForHumans()}}</small>
+                                <small class="text-muted"><i class="far fa-clock"></i> For {{$post->created_at->diffForHumans()}}</small>
                                 <p class="card-text">{{$post->preview}}</p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                 <div class="bg-black text-white text-center d-none d-lg-block">
                     <h1>Sponsor</h1>
                 </div>
-                <h1>Sponsor Her</h1>
+                <img src="/img/ADD.PNG" class="mb-3" alt="">
                 <br>
                 <div class="card  d-none d-lg-block" style="width: 18rem;">
                     <div class="card-header text-dark text-center">
@@ -151,7 +151,7 @@
 
     </section>
 
-    <section id="last-news">
+    <section id="latest_rumors">
         <div class="container">
             <div class="row justify-content-start mb-3">
                 <div class="col-md-4">
@@ -182,9 +182,7 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="latest_rumors">
         <div class="container mb-4">
             <div class="row">
                 <div class="col-md-4">

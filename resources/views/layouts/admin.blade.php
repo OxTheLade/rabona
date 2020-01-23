@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
-        <a href="index.php" class="navbar-brand">Back to the side</a>
+        <a href="{{route('index')}}" class="navbar-brand">Back to the side</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,9 +33,6 @@
                         </a>
                         <a href="{{route('posts.create')}}" class="dropdown-item {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}">
                             <i class="fas fa-pencil-alt"></i> Add Post
-                        </a>
-                        <a href="edit_post.php" class="dropdown-item {{request()->route()->getName() === 'posts.edit' ? 'active' : ''}}">
-                            <i class="fas fa-edit"></i> Edit Post
                         </a>
                     </div>
                 </li>

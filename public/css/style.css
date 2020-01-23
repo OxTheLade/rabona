@@ -56,10 +56,10 @@ footer {
     position: absolute;
     z-index: 1;
 }
-/*#latest_rumors .card {*/
-/*    position: relative;*/
-/*    bottom: 542px;*/
-/*}*/
+#latest_rumors_header {
+    position: relative;
+    top: -573px;
+}
 .bg-dark-blue {
     background-color: #004682;
 }
@@ -71,4 +71,12 @@ footer {
 }
 #read_more li:hover {
     background-color: #fff;
+}
+#edit_post .btn-primary {
+    position: relative;
+    top: 18px;
+}
+#edit_post .btn-danger {
+    position: relative;
+    top: -35px;
 }

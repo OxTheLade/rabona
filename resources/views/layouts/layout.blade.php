@@ -37,6 +37,11 @@
                 <li class="nav-item">
                     <a href="contact.html" class="nav-link">Kontakt</a>
                 </li>
+                @if(Auth::user() ? Auth::user()->isAdmin() : '')
+                <li class="nav-item">
+                    <a href="{{route('admin.index')}}" class="nav-link">Admin</a>
+                </li>
+                @endif
             </ul>
             <a class="ml-auto" href="https://facebook.com">
                 <i class="fab fa-facebook-square fa-2x"></i>

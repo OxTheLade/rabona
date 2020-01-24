@@ -20,11 +20,18 @@
     background: #000;
     color: #fff;
 }
-
-footer {
-    height: 70px;
+.footer {
+    position: fixed;
     bottom: 0;
     width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 100px;
+    line-height: 70px; /* Vertically center the text there */
+}
+#admin-footer {
+    background: #000;
+    color: #fff;
+    padding-bottom: 50px;
 }
 
 #showcase {
@@ -71,12 +78,4 @@ footer {
 }
 #read_more li:hover {
     background-color: #fff;
-}
-#edit_post .btn-primary {
-    position: relative;
-    top: 18px;
-}
-#edit_post .btn-danger {
-    position: relative;
-    top: -35px;
 }

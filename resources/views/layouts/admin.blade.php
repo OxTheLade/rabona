@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/6e0b74ce89.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.0/d3.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     <title>Rabona.dk | Få de seneste nyheder!</title>
@@ -23,15 +25,21 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item px-2">
-                    <a href="{{route('admin.index')}}" class="nav-link {{ request()->route()->getName() === 'admin.index' ? 'active'  : '' }} "><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="{{route('admin.index')}}"
+                       class="nav-link {{ request()->route()->getName() === 'admin.index' ? 'active'  : '' }} "><i
+                                class="fas fa-home"></i> Dashboard</a>
                 </li>
                 <li class="nav-item px-2 dropdown">
-                    <a href="posts" class="nav-link dropdown-toggle {{request()->route()->getName() === 'posts.index' ? 'active' : ''}} {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}" data-toggle="dropdown">Posts</a>
+                    <a href="posts"
+                       class="nav-link dropdown-toggle {{request()->route()->getName() === 'posts.index' ? 'active' : ''}} {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}"
+                       data-toggle="dropdown">Posts</a>
                     <div class="dropdown-menu">
-                        <a href="{{route('posts.index')}}" class="dropdown-item {{request()->route()->getName() === 'posts.index' ? 'active' : ''}}">
+                        <a href="{{route('posts.index')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'posts.index' ? 'active' : ''}}">
                             <i class="far fa-newspaper"></i> All Post
                         </a>
-                        <a href="{{route('posts.create')}}" class="dropdown-item {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}">
+                        <a href="{{route('posts.create')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'posts.create' ? 'active' : ''}}">
                             <i class="fas fa-pencil-alt"></i> Add Post
                         </a>
                     </div>
@@ -51,7 +59,7 @@
                     </a>
 
                     <div class="dropdown-menu">
-                        <a href="profile.php" class="dropdown-item">
+                        <a href="{{route('profile.index')}}" class="dropdown-item">
                             <i class="fas fa-user-circle"></i> Profile
                         </a>
                         <a href="settings.html" class="dropdown-item">
@@ -61,7 +69,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
+                       onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         <i class="fas fa-user-times"></i> Logout
                     </a>
@@ -76,15 +84,6 @@
 
 @yield('content')
 
-<footer id="main-footer" class="text-center p-4 mt-3 ">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p>Copyright &copy; <span id="year"></span> Rabona.dk</p>
-            </div>
-        </div>
-    </div>
-</footer>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

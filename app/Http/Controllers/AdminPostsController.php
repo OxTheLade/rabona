@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostsCreateRequest;
+use App\Http\Requests\PostsEditRequest;
+use App\Http\Requests\PostsUpdateRequest;
 use App\Photo;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
 {
@@ -40,7 +45,7 @@ class AdminPostsController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
         //
 
@@ -65,6 +70,9 @@ class AdminPostsController extends Controller
         }
 
         $user->posts()->create($input);
+
+        Session::flash('created_post','The post has been created!');
+
 
         return redirect('/admin/posts');
 
@@ -105,11 +113,11 @@ class AdminPostsController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostsEditRequest $request, $id)
     {
         //
 
-        $post = Auth::user()->posts()->whereId($id)->first();
+        $post = Post::whereId($id)->first();
 
         $input = $request->all();
 
@@ -132,6 +140,7 @@ class AdminPostsController extends Controller
 
         $post->update($input);
 
+        Session::flash('updated_post','The post has been updated!');
 
         return redirect('/admin/posts');
 
@@ -151,6 +160,9 @@ class AdminPostsController extends Controller
         unlink(public_path() . $post->photo->path);
 
         $post->delete();
+
+        Session::flash('deleted_post','The post has been deleted!');
+
 
         return redirect('/admin/posts');
     }

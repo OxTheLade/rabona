@@ -12,7 +12,7 @@
 
     <div class="container">
         <div class="row justify-content-center mt-3">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header mb-2">
                         <h1>Create Post</h1>
@@ -57,8 +57,18 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+            <div class="col-md-3">
+
+
+                @include('admin.includes.form_error')
+
+
+            </div>
         </div>
     </div>
+
+
+
 
 
 

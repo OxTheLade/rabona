@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="fb:app_id" content="712150002641494" />
     <script src="https://kit.fontawesome.com/6e0b74ce89.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js')}}" defer></script>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
@@ -15,7 +16,7 @@
 <body>
 <nav id="navbar" class="navbar navbar-expand-sm navbar-dark bg-black">
     <div class="container">
-        <a href="#"><img src="{{asset('img/rabona%20logo.png')}}" alt="" class="nav-brand img-fluid rounded rounded-circle"
+        <a href="{{route('index')}}"><img src="{{asset('img/rabona%20logo.png')}}" alt="" class="nav-brand img-fluid rounded rounded-circle"
                                   height="100" width="100"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -64,6 +65,7 @@
         <div class="row">
             <div class="col">
                 <p>Copyright &copy; <span id="year"></span> Rabona.dk</p>
+                <small>CMS & Design by Mikail Kocak</small>
             </div>
         </div>
     </div>

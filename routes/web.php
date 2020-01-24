@@ -19,11 +19,14 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/post/{id}', ['as' => 'article', 'uses' => 'AdminPostsController@post']);
 
-//Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('/admin', 'AdminController@index')->name('admin.index');
+
+    Route::resource('admin/profile', 'AdminProfileController');
+    Route::patch('admin/profile/{id}', 'AdminProfileController@photo');
+
 
     Route::resource('admin/posts', 'AdminPostsController', ['names' => [
 

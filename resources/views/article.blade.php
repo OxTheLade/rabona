@@ -4,6 +4,9 @@
 
 
 @section('content')
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v5.0&appId=712150002641494&autoLogAppEvents=1"></script>
+
 
     <section id="main-article">
         <div class="container mt-4 mb-4">
@@ -27,6 +30,7 @@
                             </p>
                         </div>
                     </div>
+                    <div class="fb-comments" data-href="https://rabona.dk/nyheder#{{$post->slug}}" data-width="" data-numposts="5"></div>
                 </div>
                 <div class="col-md-3">
                     <div class="bg-black text-white text-center">

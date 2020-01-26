@@ -26,6 +26,7 @@ class Post extends Model
         'body',
         'preview',
         'category_id',
+        'type',
         'photo_id'
     ];
 

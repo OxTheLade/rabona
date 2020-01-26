@@ -52,6 +52,11 @@
                             </div>
 
                             <div class="form-group">
+                                {!! Form::label('type', 'Big or small news?:') !!}
+                                {!! Form::select('type', [0 => 'Non important news', 1 => 'Important news'], null, ['class'=>'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
                                 {!! Form::label('photo_id', 'Photo:') !!}
                                 {!! Form::file('photo_id', ['class'=>'form-control']) !!}
                             </div>
@@ -70,25 +75,25 @@
 
                             </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        {!! Form::button('<i class="fas fa-check"></i> Save Changes', ['type'=>'submit','class'=>'btn btn-success btn-block col-md-6']) !!}
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {!! Form::button('<i class="fas fa-check"></i> Save Changes', ['type'=>'submit','class'=>'btn btn-success btn-block col-md-6']) !!}
                                 </div>
+                            </div>
+                        {!! Form::close() !!}
+
+
+                        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
+
+                        @csrf <!-- {{ csrf_field() }} -->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    {!! Form::button('<i class="fas fa-trash"></i> Delete Post', ['type'=>'submit','class'=>'btn btn-danger btn-block col-md-6']) !!}
+                                </div>
+                            </div>
                             {!! Form::close() !!}
-
-
-                            {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
-
-                            @csrf <!-- {{ csrf_field() }} -->
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-
-                                        {!! Form::button('<i class="fas fa-trash"></i> Delete Post', ['type'=>'submit','class'=>'btn btn-danger btn-block col-md-6']) !!}
-                                    </div>
-                                </div>
-                                {!! Form::close() !!}
                         </div>
                     </div>
 

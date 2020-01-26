@@ -17,44 +17,51 @@
                     <div class="card-header mb-2">
                         <h1>Create Post</h1>
                     </div>
-                {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
+                    <div class="card-body">
+                    {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
 
-                @csrf <!-- {{ csrf_field() }} -->
+                    @csrf <!-- {{ csrf_field() }} -->
 
-                    <div class="form-group">
-                        {!! Form::label('title', 'Title:') !!}
-                        {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                        <div class="form-group">
+                            {!! Form::label('title', 'Title:') !!}
+                            {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('category_id', 'Category:') !!}
+                            {!! Form::select('category_id', [''=>'Choose Categories', 1=>'Test'], null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('type', 'Big or small news?:') !!}
+                            {!! Form::select('type', [''=>'Choose Type', 0 => 'Non important news', 1 => 'Important news'], null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('photo_id', 'Photo:') !!}
+                            {!! Form::file('photo_id', ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('preview', 'Preview:') !!}
+                            {!! Form::text('preview', null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('body', 'Description:') !!}
+                            {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                            <script>
+                                CKEDITOR.replace('body');
+                            </script>
+
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('category_id', 'Category:') !!}
-                        {!! Form::select('category_id', [''=>'Choose Categories', 1=>'Test'], null, ['class'=>'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('photo_id', 'Photo:') !!}
-                        {!! Form::file('photo_id', ['class'=>'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('preview', 'Preview:') !!}
-                        {!! Form::text('preview', null, ['class'=>'form-control']) !!}
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('body', 'Description:') !!}
-                        {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
-                        <script>
-                            CKEDITOR.replace('body');
-                        </script>
-
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
-                    </div>
-
-                    {!! Form::close() !!}
                 </div>
             </div>
             <div class="col-md-3">

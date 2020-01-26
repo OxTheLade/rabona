@@ -17,7 +17,9 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/post/{id}', ['as' => 'article', 'uses' => 'AdminPostsController@post']);
+Route::get('/nyheder', ['as' => 'all_news', 'uses' => 'HomeController@posts']);
+Route::get('/nyheder/{id}', ['as' => 'article', 'uses' => 'AdminPostsController@post']);
+
 
 
 Route::group(['middleware' => 'admin'], function () {

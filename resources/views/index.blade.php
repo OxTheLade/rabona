@@ -13,6 +13,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-2">
                             @foreach($posts as $post)
+                                @if($post->type === 1)
                             <div class="card">
                                 <a href="{{route('article', $post->slug)}}">
                                     <img width="250" height="190" src="{{$post->photo->path}}" alt=""
@@ -28,6 +29,7 @@
 
                     </div>
                     <div class="col-md-6 mb-3">
+                        @endif
                         @endforeach
                     </div>
                 </div>

@@ -25,7 +25,6 @@ class PostsEditRequest extends FormRequest
     {
         return [
             //
-            'photo_id' => 'required',
             'title' => 'required',
             'category_id' => 'required',
             'preview' => 'required',

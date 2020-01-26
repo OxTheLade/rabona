@@ -119,7 +119,10 @@ class AdminPostsController extends Controller
 
         $post = Post::whereId($id)->first();
 
-        $input = $request->all();
+        $input = $request->except('photo_id');
+        $photo_id = $request->photo_id;
+
+        if($photo_id) {
 
 
         if($post->photo->path){
@@ -136,6 +139,7 @@ class AdminPostsController extends Controller
 
             $input['photo_id'] = $photo->id;
 
+        }
         }
 
         $post->update($input);
@@ -175,5 +179,6 @@ class AdminPostsController extends Controller
         return view('article', compact('post'));
 
     }
+
 
 }

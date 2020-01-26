@@ -5,19 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta property="fb:app_id" content="712150002641494" />
+    <meta property="fb:app_id" content="712150002641494"/>
     <script src="https://kit.fontawesome.com/6e0b74ce89.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js')}}" defer></script>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
+    @yield('title')
     <title>Rabona.dk | Få de seneste nyheder!</title>
 </head>
 
 <body>
 <nav id="navbar" class="navbar navbar-expand-sm navbar-dark bg-black">
     <div class="container">
-        <a href="{{route('index')}}"><img src="{{asset('img/rabona%20logo.png')}}" alt="" class="nav-brand img-fluid rounded rounded-circle"
-                                  height="100" width="100"></a>
+        <a href="{{route('index')}}"><img src="{{asset('img/rabona%20logo.png')}}" alt=""
+                                          class="nav-brand img-fluid rounded rounded-circle"
+                                          height="100" width="100"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +29,7 @@
                     <a href="{{route('index')}}" class="nav-link">Forside</a>
                 </li>
                 <li class="nav-item {{request()->is('nyheder') ? 'active' : ''}}">
-                    <a href="#" class="nav-link">Nyheder</a>
+                    <a href="{{route('all_news')}}" class="nav-link">Nyheder</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link {{request()->is('liga-tabeller') ? 'active' : ''}}">Liga Tabeller</a>
@@ -39,9 +41,9 @@
                     <a href="contact.html" class="nav-link">Kontakt</a>
                 </li>
                 @if(Auth::user() ? Auth::user()->isAdmin() : '')
-                <li class="nav-item">
-                    <a href="{{route('admin.index')}}" class="nav-link">Admin</a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.index')}}" class="nav-link">Admin</a>
+                    </li>
                 @endif
             </ul>
             <a class="ml-auto" href="https://facebook.com">
@@ -83,7 +85,6 @@
 <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
-
 
 
 </script>

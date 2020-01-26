@@ -180,5 +180,39 @@ class AdminPostsController extends Controller
 
     }
 
+    public function storeRumour(PostsCreateRequest $request)
+    {
+        //
+
+        $input = $request->all();
+
+        $user = Auth::user();
+
+        $user->posts();
+
+        if ($file = $request->file('photo_id')) {
+
+            $name = time() . $file->getClientOriginalName();
+
+
+            $file->move('images', $name);
+
+            $photo = Photo::create(['path' => $name]);
+
+            $input['photo_id'] = $photo->id;
+
+
+        }
+
+        $user->posts()->create($input);
+
+        Session::flash('created_post','The post has been created!');
+
+
+        return redirect('/admin/posts');
+
+
+    }
+
 
 }

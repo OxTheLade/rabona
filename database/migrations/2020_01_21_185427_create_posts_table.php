@@ -17,12 +17,13 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index();
-            $table->integer('is_important')->default(0);
             $table->integer('photo_id')->unsigned()->index();
+            $table->integer('is_important')->default(0);
+            $table->integer('post_type');
             $table->string('title');
             $table->string('preview');
             $table->text('body');
-            $table->string('slug')->default(0);
+            $table->string('slug');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

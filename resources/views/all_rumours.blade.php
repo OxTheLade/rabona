@@ -14,13 +14,13 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <h1>Alle Nyheder</h1>
+                            <h1>Alle Rygter</h1>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled">
 
                                 @foreach($posts as $post)
-                                    @if($post->post_type === 0)
+                                    @if($post->post_type === 1)
                                         <a href="{{route('article', $post->slug)}}">
                                             <li class="media mb-2 bg-grey">
                                                 <img width="97" height="90" class="mr-3" src="{{$post->photo->path}}" alt="">

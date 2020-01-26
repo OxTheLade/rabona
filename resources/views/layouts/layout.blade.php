@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     @yield('title')
-    <title>Rabona.dk | Få de seneste nyheder!</title>
 </head>
 
 <body>
@@ -35,11 +34,11 @@
                     <a href="#" class="nav-link {{request()->is('liga-tabeller') ? 'active' : ''}}">Liga Tabeller</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Transfer rygter</a>
+                    <a href="{{route('all_rumours')}}" class="nav-link {{request()->is('rygter') ? 'active' : ''}}">Transfer rygter</a>
                 </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Kontakt</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a href="contact.html" class="nav-link">Kontakt</a>--}}
+{{--                </li>--}}
                 @if(Auth::user() ? Auth::user()->isAdmin() : '')
                     <li class="nav-item">
                         <a href="{{route('admin.index')}}" class="nav-link">Admin</a>

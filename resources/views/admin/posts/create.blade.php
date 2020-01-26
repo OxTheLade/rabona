@@ -28,13 +28,18 @@
                         </div>
 
                         <div class="form-group">
+                            {!! Form::label('post_type', 'Type of post:') !!}
+                            {!! Form::select('post_type', [''=>'Choose Type', 0 => 'Football news', 1 => 'Football Rumours'], null, ['class'=>'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!! Form::label('category_id', 'Category:') !!}
                             {!! Form::select('category_id', [''=>'Choose Categories', 1=>'Test'], null, ['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('type', 'Big or small news?:') !!}
-                            {!! Form::select('type', [''=>'Choose Type', 0 => 'Non important news', 1 => 'Important news'], null, ['class'=>'form-control']) !!}
+                            {!! Form::label('is_important', 'Big or small news?:') !!}
+                            {!! Form::select('is_important', [''=>'Choose Type', 0 => 'Non important news', 1 => 'Important news'], null, ['class'=>'form-control']) !!}
                         </div>
 
                         <div class="form-group">

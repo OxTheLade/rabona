@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+@section('title')
+
+    <title>Rabona.dk | Få de seneste nyheder!</title>
+
+@stop
 
 @section('content')
 
@@ -12,23 +17,29 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-2">
-                            @foreach($posts as $post)
-                                @if($post->type === 1)
-                            <div class="card">
-                                <a href="{{route('article', $post->slug)}}">
-                                    <img width="250" height="190" src="{{$post->photo->path}}" alt=""
-                                         class="card-img-top">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{$post->title}}</h4>
-                                </a>
+                            <?php $count = 0; ?>
+                                @foreach($posts as $post)
+                                    @if($post->is_important === 1 & $post->post_type === 0)
+                                        <?php if($count == 4) break; ?>
 
-                                <small class="text-muted"><i class="far fa-clock"></i> For {{$post->created_at->diffForHumans()}}</small>
-                                <p class="card-text">{{$post->preview}}</p>
-                            </div>
+
+                                        <div class="card">
+                                            <a href="{{route('article', $post->slug)}}">
+                                                <img width="250" height="190" src="{{$post->photo->path}}" alt=""
+                                                     class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">{{$post->title}}</h4>
+                                            </a>
+
+                                            <small class="text-muted"><i class="far fa-clock"></i>
+                                                For {{$post->created_at->diffForHumans()}}</small>
+                                            <p class="card-text">{{$post->preview}}</p>
+                                        </div>
                         </div>
 
                     </div>
                     <div class="col-md-6 mb-3">
+                        <?php $count++; ?>
                         @endif
                         @endforeach
                     </div>
@@ -155,15 +166,6 @@
 
     <section id="latest_rumors">
         <div class="container">
-            <div class="row justify-content-start mb-3">
-                <div class="col-md-4">
-                </div>
-
-
-                <div class="col-md-4">
-
-                </div>
-            </div>
             <div class="row justify-content-start">
                 <div class="col-md-4">
 
@@ -178,57 +180,28 @@
                     <div class="bg-black text-white text-center">
                         <h1>De Seneste Transfer Rygter</h1>
                     </div>
-                </div>
-                <div class="col-md-4 d-none d-lg-block">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="container mb-4">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                        <div class="card-img-caption">
-                            <a href="#">
-                                <h4 class="card-text bg-black-opacity text-white">Quaresma til Fenerbahce?</h4>
-                                <img width="250" height="180" class="card-img-top"
-                                     src="{{asset('img/quaresma-wme6-cover-Wcpu_cover.jpg')}}" alt="">
-                            </a>
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <?php $count = 0; ?>
+                            @foreach($posts as $post)
+                                @if($post->is_important === 1 & $post->post_type === 1)
+                                        <?php if($count == 4) break; ?>
+                                    <div class="card mb-3">
+                                        <div class="card-img-caption">
+                                            <a href="{{route('article', $post->slug)}}">
+                                                <h4 class="card-text bg-black-opacity text-white">{{$post->title}}</h4>
+                                                <img width="250" height="180" class="card-img-top"
+                                                     src="{{$post->photo->path}}" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-md-6">
+                            <?php $count++; ?>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-img-caption">
-                            <a href="#">
-                                <h4 class="card-text bg-black-opacity text-white">Besiktas taler med Ronaldinho</h4>
-                                <img width="250" height="180" class="card-img-top" src="{{asset('img/images.jpg')}}"
-                                     alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-3">
-                        <div class="card-img-caption">
-                            <a href="#">
-                                <h4 class="card-text bg-black-opacity text-white">Besiktas taler med Ronaldinho</h4>
-                                <img width="250" height="180" class="card-img-top" src="{{asset('img/images.jpg')}}"
-                                     alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img-caption">
-                            <a href="#">
-                                <h4 class="card-text bg-black-opacity text-white">Besiktas taler med Ronaldinho</h4>
-                                <img width="250" height="180" class="card-img-top" src="{{asset('img/images.jpg')}}"
-                                     alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
                 </div>
             </div>
         </div>

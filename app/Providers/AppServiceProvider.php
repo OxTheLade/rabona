@@ -4,6 +4,8 @@ namespace App\Providers;
 
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,5 +29,12 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Carbon::setLocale('da');
+
+        Validator::extendImplicit('current_password',
+            function ($attribute, $value, $parameters, $validator) {
+                return Hash::check($value, auth()->user()->password);
+
+            });
+
     }
 }

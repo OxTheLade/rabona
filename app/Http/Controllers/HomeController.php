@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\League;
 use App\Post;
+use App\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -28,10 +30,12 @@ class HomeController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->get();
 
+        $leagues = League::where('name', 'Premier League')->get();
 
 
 
-        return view('index', compact('posts'));
+
+        return view('index', compact('posts', 'leagues'));
     }
     public function posts(){
 
@@ -50,6 +54,16 @@ class HomeController extends Controller
 
 
         return view('all_rumours', compact('posts'));
+    }
+
+    public function leagueTables() {
+
+        $leagues = League::get()->all();
+
+//        $team = Team::orderBy('points', 'asc')->get();
+
+
+        return view('league_tables', compact('leagues'));
     }
 
 }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta property="fb:app_id" content="712150002641494"/>
     <script src="https://kit.fontawesome.com/6e0b74ce89.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js')}}" defer></script>
+{{--    <script src="{{ asset('js/app.js')}}" defer></script>--}}
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     @yield('title')
@@ -31,14 +31,16 @@
                     <a href="{{route('all_news')}}" class="nav-link">Nyheder</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{request()->is('liga-tabeller') ? 'active' : ''}}">Liga Tabeller</a>
+                    <a href="{{route('league_tables')}}"
+                       class="nav-link {{request()->is('liga-tabeller') ? 'active' : ''}}">Liga Tabeller</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('all_rumours')}}" class="nav-link {{request()->is('rygter') ? 'active' : ''}}">Transfer rygter</a>
+                    <a href="{{route('all_rumours')}}" class="nav-link {{request()->is('rygter') ? 'active' : ''}}">Transfer
+                        rygter</a>
                 </li>
-{{--                <li class="nav-item">--}}
-{{--                    <a href="contact.html" class="nav-link">Kontakt</a>--}}
-{{--                </li>--}}
+                {{--                <li class="nav-item">--}}
+                {{--                    <a href="contact.html" class="nav-link">Kontakt</a>--}}
+                {{--                </li>--}}
                 @if(Auth::user() ? Auth::user()->isAdmin() : '')
                     <li class="nav-item">
                         <a href="{{route('admin.index')}}" class="nav-link">Admin</a>
@@ -71,6 +73,12 @@
         </div>
     </div>
 </footer>
+<script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+
+</script>
 @yield('scripts')
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -80,13 +88,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-<script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-
-
-</script>
 </body>
 
 </html>

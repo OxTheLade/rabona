@@ -12,7 +12,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
-    <title>Rabona.dk | Få de seneste nyheder!</title>
+    <title>Rabona.dk | Admin</title>
 </head>
 
 <body>
@@ -44,8 +44,22 @@
                         </a>
                     </div>
                 </li>
-                <li class="nav-item px-2">
-                    <a href="categories.html" class="nav-link">Categories</a>
+                <li class="nav-item px-2 dropdown">
+                    <a href="{{route('leagues.index')}}" class="nav-link dropdown-toggle {{request()->route()->getName() === 'leagues.index' ? 'active' : ''}} {{request()->route()->getName() === 'leagues.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.edit' ? 'active' : ''}}" data-toggle="dropdown">Leagues</a>
+                    <div class="dropdown-menu">
+                        <a href="{{route('leagues.index')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'leagues.index' ? 'active' : ''}}">
+                            <i class="fas fa-table"></i> All Leagues
+                        </a>
+                        <a href="{{route('leagues.create')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'leagues.create' ? 'active' : ''}}">
+                            <i class="fas fa-plus-square"></i> Add League
+                        </a>
+                        <a href="{{route('teams.create')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'teams.create' ? 'active' : ''}}">
+                            <i class="fas fa-plus-square"></i> Add Team
+                        </a>
+                    </div>
                 </li>
                 <li class="nav-item px-2">
                     <a href="users.php" class="nav-link">Users</a>

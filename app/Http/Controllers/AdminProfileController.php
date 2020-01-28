@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminChangePasswordRequest;
 use App\Http\Requests\AdminProfileRequest;
 use App\Photo;
+use App\Rules\MatchOldPassword;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
@@ -19,7 +23,7 @@ class AdminProfileController extends Controller
         //
         $user = Auth::user();
 
-        return view('admin.profile', compact('user'));
+        return view('admin.profile.index', compact('user'));
     }
 
 
@@ -28,14 +32,15 @@ class AdminProfileController extends Controller
         //
         $user = Auth::user()->whereId($id)->first();
 
-        $input = $request->all();
+        $input = $request->except('photo_id');
+        $photo_id = $request->photo_id;
 
-        switch ($request->submitbutton){
-
-            case 'Save Photo':
-//             unlink(public_path() . $user->photo->path);
+        if ($photo_id) {
 
 
+            if($user->photo->path){
+                unlink(public_path() . $user->photo->path);
+            }
 
         if ($file = $request->file('photo_id')) {
 
@@ -50,7 +55,6 @@ class AdminProfileController extends Controller
 
 
         }
-        break;
     }
 
         $user->update($input);
@@ -81,30 +85,22 @@ class AdminProfileController extends Controller
 
     }
 
-//    public function photo(Request $request)
-//    {
-//
-//        $user = Auth::user();
-//
-//        $input = $request->all();
-//
-//
-//        if($file = $request->file('photo_id')){
-//
-//
-//            $name = time() . $file->getClientOriginalName();
-//
-//            $file->move('images', $name);
-//
-//            $photo = Photo::create(['path'=>$name]);
-//
-//            $input['photo_id'] = $photo->id;
-//
-//
-//        }
-//
-//
-//        $user->update($input);
-//
-//    }
+    public function changePasswordView(){
+
+        return view('admin.profile.password');
+    }
+
+    public function changePassword(Request $request){
+
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required', 'min:7'],
+            'confirmed_password' => ['same:new_password'],
+        ]);
+
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+
+        return redirect('/admin/profile');
+    }
 }

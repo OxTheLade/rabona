@@ -35,7 +35,7 @@
 
                 </div>
                 <div class="col-md-3">
-                    <a href="{{route('admin.index')}}" class="btn btn-warning btn-block">
+                    <a href="{{route('profile.password')}}" class="btn btn-warning btn-block">
                         <i class="fas fa-key"></i> Change Password
                     </a>
                 </div>
@@ -75,7 +75,7 @@
                     <img height="70" width="100" src="{{$user->photo ? $user->photo->path : asset('img/avatar.png')}}"
                          alt="{{asset('img/avatar.png')}}"
                          class="d-block img-fluid  mb-3">
-                    {!! Form::model($user, ['method'=>'PATCH', 'action'=>['AdminProfileController@photo', $user->id], 'files'=>true]) !!}
+                    {!! Form::model($user, ['method'=>'PATCH', 'action'=>['AdminProfileController@update', $user->id], 'files'=>true]) !!}
                     <div class="form-group">
                         {!! Form::file('photo_id', ['class'=>'form-control']) !!}
                     </div>

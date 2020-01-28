@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <div class="bg-black text-white text-center d-none d-lg-block">
-                    <h1>Sponsor</h1>
+                    <h1>Annonce</h1>
                 </div>
                 <img src="/img/ADD.PNG" class="mb-3" alt="">
                 <br>

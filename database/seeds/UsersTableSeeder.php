@@ -18,7 +18,8 @@ class UsersTableSeeder extends Seeder
             'email'=>'mikail38@live.dk',
             'password'=> bcrypt('Oguzhan00'),
             'is_active'=> 1,
-            'role_id'=>3
+            'role_id'=>3,
+            'photo_id'=>1
 
 
         ]);

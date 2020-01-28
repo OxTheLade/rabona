@@ -45,7 +45,9 @@
                     </div>
                 </li>
                 <li class="nav-item px-2 dropdown">
-                    <a href="{{route('leagues.index')}}" class="nav-link dropdown-toggle {{request()->route()->getName() === 'leagues.index' ? 'active' : ''}} {{request()->route()->getName() === 'leagues.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.edit' ? 'active' : ''}}" data-toggle="dropdown">Leagues</a>
+                    <a href="{{route('leagues.index')}}"
+                       class="nav-link dropdown-toggle {{request()->route()->getName() === 'leagues.index' ? 'active' : ''}} {{request()->route()->getName() === 'leagues.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.create' ? 'active' : ''}} {{request()->route()->getName() === 'teams.edit' ? 'active' : ''}}"
+                       data-toggle="dropdown">Leagues</a>
                     <div class="dropdown-menu">
                         <a href="{{route('leagues.index')}}"
                            class="dropdown-item {{request()->route()->getName() === 'leagues.index' ? 'active' : ''}}">
@@ -61,8 +63,20 @@
                         </a>
                     </div>
                 </li>
-                <li class="nav-item px-2">
-                    <a href="users.php" class="nav-link">Users</a>
+                <li class="nav-item px-2 dropdown">
+                    <a href="{{route('users.index')}}"
+                       class="nav-link dropdown-toggle {{request()->route()->getName() === 'users.index' ? 'active' : ''}} {{request()->route()->getName() === 'users.create' ? 'active' : ''}} {{request()->route()->getName() === 'users.create' ? 'active' : ''}} {{request()->route()->getName() === 'users.edit' ? 'active' : ''}}"
+                       data-toggle="dropdown"><i class="fas fa-users"></i> Users</a>
+                    <div class="dropdown-menu">
+                        <a href="{{route('users.index')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'users.index' ? 'active' : ''}}">
+                            <i class="fas fa-user-alt"></i> All Users
+                        </a>
+                        <a href="{{route('users.create')}}"
+                           class="dropdown-item {{request()->route()->getName() === 'users.create' ? 'active' : ''}}">
+                            <i class="fas fa-plus-square"></i> Add Users
+                        </a>
+                    </div>
                 </li>
             </ul>
 

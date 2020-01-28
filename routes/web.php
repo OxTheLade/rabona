@@ -32,7 +32,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/profile', 'AdminProfileController');
 
 
-
+    Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController', ['names' => [
 
         'index' => 'posts.index'

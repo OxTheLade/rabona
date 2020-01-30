@@ -25,6 +25,9 @@ Route::get('/liga-tabeller', ['as' => 'league_tables', 'uses' => 'HomeController
 
 Route::group(['middleware' => 'admin'], function () {
 
+    Route::get('/author', 'AuthorController@index')->name('author.index');
+
+
     Route::get('/admin', 'AdminController@index')->name('admin.index');
 
     Route::get('admin/profile/change_password', 'AdminProfileController@changePasswordView')->name('profile.password');
@@ -43,5 +46,20 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/leagues/teams/create', 'AdminTeamsController@create')->name('teams.create');
     Route::get('admin/leagues/teams/{id}/edit', 'AdminTeamsController@edit')->name('teams.edit');
     Route::get('admin/leagues/{id}/teams', 'AdminTeamsController@index')->name('leagues.teams');
+
+});
+
+// Author Route Group
+Route::group(['middleware' => 'author'], function() {
+
+    Route::get('/author', 'AuthorController@index')->name('author.index');
+
+    Route::resource('author/posts', 'AuthorPostsController', ['names' => [
+
+        'index' => 'author.posts.index',
+        'create' => 'author.posts.create',
+        'edit' => 'author.posts.edit',
+
+    ]]);
 
 });

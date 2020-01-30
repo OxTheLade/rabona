@@ -58,6 +58,17 @@ class User extends Authenticatable
 
     }
 
+    public function isAuthor() {
+
+        if($this->role->name == "Author" && $this->is_active == 1) {
+
+            return true;
+        }
+
+        return false;
+
+    }
+
     public function posts() {
 
         return $this->hasMany('App\Post');

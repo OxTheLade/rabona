@@ -20,13 +20,20 @@
     background: #000;
     color: #fff;
 }
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 100px; /* Margin bottom by footer height */
+}
 .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 100px;
-    line-height: 70px; /* Vertically center the text there */
+    height: 80px; /* Set the fixed height of the footer here */
+    line-height: 9px; /* Vertically center the text there */
+    background-color: #f5f5f5;
 }
 #admin-footer {
     background: #000;
@@ -35,7 +42,7 @@
 }
 
 #showcase {
-    padding-top: 120px;
+    padding-top: 80px;
 }
 
 
@@ -81,4 +88,27 @@
 }
 #all_news li:hover {
     background-color: #fff;
+}
+.text-black {
+    color: #000;
+}
+.img-max-width{
+    max-width: 100%;
+}
+a.deco-none {
+    text-decoration:none !important;
+    color: #000;
+
+}
+.bg-light-grey{
+    background-color: #f2f2f2;
+}
+#seneste_nyt{
+    text-decoration:none !important;
+    color: #fff;
+}
+.card-img-top {
+    max-height: 45000px;
+    min-height: 150px;
+    object-fit: cover;
 }

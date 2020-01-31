@@ -8,144 +8,106 @@
 
 @section('content')
 
+
+
     <section id="main-header">
+{{--        <img class="float-right" src="{{asset('img/ADD.PNG')}}" alt="">--}}
+{{--        <img class="float-left" src="{{asset('img/ADD.PNG')}}" alt="">--}}
+
+
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="bg-black text-white text-center">
-                        <h1>De Seneste Nyheder</h1>
-                    </div>
                     <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <?php $count = 0; ?>
-                            @foreach($posts as $post)
-                                @if($post->is_important === 1 & $post->post_type === 0)
-                                    <?php if ($count == 4) break; ?>
-
-
+                        <div class="col-md-12 mb-2">
+                            @foreach($importantPosts as $key => $importantPost)
+                                @if($key == 0)
                                     <div class="card">
-                                        <a href="{{route('article', $post->slug)}}">
-                                            <img width="250" height="190" src="{{$post->photo->path}}" alt=""
-                                                 class="card-img-top">
+                                        <a class="deco-none" href="#">
+                                            <img width="250" height="210" src="{{$importantPost->photo->path}}" alt=""
+                                                 class="card-img-top img-max-width">
                                             <div class="card-body">
-                                                <h4 class="card-title">{{$post->title}}</h4>
+                                                <h4 class="card-title">{{$importantPost->title}}</h4>
                                         </a>
 
+                                        <p class="card-text">{{$importantPost->preview}}</p>
+                                    </div>
+                                    <div class="card-footer">
                                         <small class="text-muted"><i class="far fa-clock"></i>
-                                            For {{$post->created_at->diffForHumans()}}</small>
-                                        <p class="card-text">{{$post->preview}}</p>
+                                            {{$importantPost->created_at->diffForHumans()}} | <a
+                                                    href="{{route('category', $importantPost->category->id)}}">{{$importantPost->category->name}}</a>
+                                        </small>
                                     </div>
                         </div>
-
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <?php $count++; ?>
                         @endif
                         @endforeach
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        @foreach($importantPosts as $key => $importantPost)
+                            @if($key == 1 || $key == 2 || $key == 3)
+                                <div class="card">
+                                    <a class="deco-none" href="{{route('article', $importantPost->slug)}}">
+                                        <img width="250" height="190" src="{{$importantPost->photo->path}}" alt=""
+                                             class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{$importantPost->title}}</h4>
+                                    </a>
 
-                    </div>
-                    <div class="col-md-6">
-
+                                    <small class="text-muted"><i class="far fa-clock"></i>
+                                        {{$importantPost->created_at->diffForHumans()}}
+                                    </small>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Corporis
+                                        deleniti fuga hic ipsam libero placeat ratione rem reprehenderit ut
+                                        voluptas.</p>
+                                </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="bg-black text-white text-center d-none d-lg-block">
-                    <h1>Annonce</h1>
+                <div class="col-md-4 mb-3">
+                    @endif
+                    @endforeach
                 </div>
-                <img src="/img/ADD.PNG" class="mb-3" alt="">
-                <br>
-                @foreach($leagues as $league)
-                    <div class="card  d-none d-lg-block" style="width: 18rem;">
-                        <div class="card-header text-dark text-center">
-                            {{$league->name}}
-                        </div>
-                        <table class="card-table table">
-                            <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Hold</th>
-                                <th scope="col">K</th>
-                                <th scope="col">P</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $number = 1; ?>
-                            @foreach($league->teams->sortByDesc('points') as $team)
-                                <tr class="{{$number <= 4 ? 'bg-dark-blue' : ''}} {{$number == 5 ? 'bg-dark-red' : ''}}">
-                                    <td>{{$number}}</td>
-                                    <?php $number++; ?>
-                                    <td><img height="25" width="25"
-                                             src="{{$team->photo->path}}"
-                                             alt="">
-                                        {{$team->name}}
-
-                                    </td>
-                                    <td>22</td>
-                                    <td>{{$team->points}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        </div>
-
-
-    </section>
-
-    <section id="latest_rumors">
-        <div class="container">
-            <div class="row justify-content-start">
                 <div class="col-md-4">
 
                 </div>
             </div>
-    </section>
-
-    <section id="latest_rumors_header">
-        <div class="container mt-2">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="bg-black text-white text-center">
-                        <h1>De Seneste Transfer Rygter</h1>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-2">
-                            <?php $count = 0; ?>
-                            @foreach($posts as $post)
-                                @if($post->is_important === 1 & $post->post_type === 1)
-                                    <?php if ($count == 4) break; ?>
-                                    <div class="card mb-3">
-                                        <div class="card-img-caption">
-                                            <a href="{{route('article', $post->slug)}}">
-                                                <h4 class="card-text bg-black-opacity text-white">{{$post->title}}</h4>
-                                                <img width="250" height="180" class="card-img-top"
-                                                     src="{{$post->photo->path}}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
+        </div>
+        <div class="col-md-4">
+            <div class="bg-black text-white">
+                <a id="seneste_nyt" href="{{route('all_news')}}">
+                    <h1 class="text-center">Seneste nyt</h1>
+                </a>
+            </div>
+            <div class="card">
+                @foreach($posts as $key => $post)
+                    @if($key == 5 || $key == 6 || $key == 7 || $key == 8 || $key == 9 || $key == 10 || $key == 11 || $key == 12)
+                        <div class="card">
+                            <a class="deco-none" href="{{route('article', $post->slug)}}">
+                                <div class="card-body bg-light-grey">
+                                    <p>{{$post->title}}</p>
+                                </div>
+                            </a>
+                            <div class="card-footer">
+                                <small class="text-muted"><i class="far fa-clock"></i>
+                                    {{$post->created_at->diffForHumans()}}
+                                </small>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <?php $count++; ?>
-                            @endif
-                            @endforeach
-                        </div>
+                    @endif
+                @endforeach
+                <div class="text-center">
+                    <div class="card-footer">
+                        <a href="{{route('all_news')}}" class="btn btn-secondary btn-block">Flere af de seneste</a>
                     </div>
                 </div>
             </div>
         </div>
-
-
+        </div>
+        </div>
     </section>
-
-
+    <hr>
 
 
 @stop

@@ -28,6 +28,6 @@ class Admin
             }
         }
 
-        return redirect('/');
+        return abort(404);
     }
 }

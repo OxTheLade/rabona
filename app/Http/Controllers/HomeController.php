@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\League;
 use App\Post;
 use App\Team;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\Searchable\Search;
 
 class HomeController extends Controller
 {
@@ -28,14 +30,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::where('post_type', 0)->orderBy('created_at', 'desc')->limit(10)->get();
 
         $leagues = League::where('name', 'Premier League')->get();
 
+        $importantPosts = Post::where('post_type', 0)->where('is_important', 1)->orderBy('created_at', 'desc')->limit(4)->get();
 
 
 
-        return view('index', compact('posts', 'leagues'));
+        return view('index', compact('posts', 'leagues', 'importantPosts'));
     }
     public function posts(){
 
@@ -64,6 +67,29 @@ class HomeController extends Controller
 
 
         return view('league_tables', compact('leagues'));
+    }
+
+
+    public function search(Request $request)
+    {
+        $searchResults = (new Search())
+            ->registerModel(Post::class, 'title')
+            ->perform($request->input('search'));
+
+
+        return view('search', compact('searchResults'));
+    }
+    public function searchIndex(){
+
+
+        return view('searchIndex');
+    }
+
+    public function category($id){
+
+        $category = Category::findOrFail($id);
+
+        return view('category_news', compact('category'));
     }
 
 }

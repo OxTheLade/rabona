@@ -31,7 +31,7 @@ class MatchOldPassword implements Rule
     }
 
     /**
-     * Get the validation error message.
+     * Get the validation errors message.
      *
      * @return string
      */

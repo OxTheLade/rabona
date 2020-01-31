@@ -26,6 +26,6 @@ class Author
 
             }
         }
-        return redirect('/');
+        return abort(404);
     }
 }

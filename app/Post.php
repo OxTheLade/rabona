@@ -5,12 +5,15 @@ namespace App;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Post extends Model
+class Post extends Model implements Searchable
 {
     //
     use Sluggable;
     use SluggableScopeHelpers;
+
 
     public function sluggable()
     {
@@ -41,6 +44,22 @@ class Post extends Model
 
         return $this->belongsTo('App\Photo');
 
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('article', $this->slug);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
+    }
+
+    public function category(){
+
+        return $this->belongsTo('App\Category');
     }
 
 

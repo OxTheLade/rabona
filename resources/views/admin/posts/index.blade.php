@@ -38,10 +38,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 ml-auto">
+                    {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@search', 'class' => 'ml-auto text-white']) !!}
+                    @csrf <!-- {{ csrf_field() }} -->
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Posts...">
+                        {!! Form::text('search', null, ['class'=>'form-control', 'placeholder' => 'Search posts...']) !!}
                         <div class="input-group-append">
-                            <button class="btn btn-primary">Search</button>
+                            {!! Form::submit('Search', ['class'=>'btn btn-primary']) !!}
                         </div>
                     </div>
                 </div>

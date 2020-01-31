@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\PostsCreateRequest;
 use App\Http\Requests\PostsEditRequest;
 use App\Photo;
@@ -10,6 +11,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Spatie\Searchable\Search;
 
 class AdminPostsController extends Controller
 {
@@ -35,7 +37,8 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
-        return view('admin.posts.create');
+        $categories = Category::pluck('name', 'id')->all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -212,6 +215,15 @@ class AdminPostsController extends Controller
 //
 //
 //    }
+
+    public function search(Request $request){
+        $searchResults = (new Search())
+            ->registerModel(Post::class, 'title')
+            ->perform($request->input('search'));
+
+
+        return view('admin.posts.search', compact('searchResults'));
+    }
 
 
 }

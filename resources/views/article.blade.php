@@ -31,6 +31,11 @@
                                 <small><i class="fas fa-edit">Rediger artikel</i></small>
                             </a>
                             @endif
+                            @if(Auth::user() ? Auth::user()->role->name == 'Author' && $post->user_id == Auth::user()->id : '')
+                                <a href="{{route('author.posts.edit', $post->id)}}">
+                                    <small><i class="fas fa-edit">Rediger artikel</i></small>
+                                </a>
+                                @endif
                         </div>
                         <div class="card-body">
                             <img src="{{$post->photo->path}}" alt=""

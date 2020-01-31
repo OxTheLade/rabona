@@ -186,7 +186,7 @@ module.exports = function xhrAdapter(config) {
     // Handle low level network errors
     request.onerror = function handleError() {
       // Real errors are hidden from us by the browser
-      // onerror should only fire if it's a network error
+      // onerror should only fire if it's a network errors
       reject(createError('Network Error', config, null, request));
 
       // Clean up request
@@ -686,14 +686,14 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 var enhanceError = __webpack_require__(/*! ./enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
 
 /**
- * Create an Error with the specified message, config, error code, request and response.
+ * Create an Error with the specified message, config, errors code, request and response.
  *
- * @param {string} message The error message.
+ * @param {string} message The errors message.
  * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {string} [code] The errors code (for example, 'ECONNABORTED').
  * @param {Object} [request] The request.
  * @param {Object} [response] The response.
- * @returns {Error} The created error.
+ * @returns {Error} The created errors.
  */
 module.exports = function createError(message, config, code, request, response) {
   var error = new Error(message);
@@ -805,14 +805,14 @@ module.exports = function dispatchRequest(config) {
 
 
 /**
- * Update an Error with the specified config, error code, and response.
+ * Update an Error with the specified config, errors code, and response.
  *
- * @param {Error} error The error to update.
+ * @param {Error} error The errors to update.
  * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {string} [code] The errors code (for example, 'ECONNABORTED').
  * @param {Object} [request] The request.
  * @param {Object} [response] The response.
- * @returns {Error} The error.
+ * @returns {Error} The errors.
  */
 module.exports = function enhanceError(error, config, code, request, response) {
   error.config = config;
@@ -6644,7 +6644,7 @@ var
 	jQuery = function( selector, context ) {
 
 		// The jQuery object is actually just the init constructor 'enhanced'
-		// Need init if jQuery is called (just allow error to be thrown if not included)
+		// Need init if jQuery is called (just allow errors to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
 	},
 
@@ -6992,7 +6992,7 @@ function( i, name ) {
 function isArrayLike( obj ) {
 
 	// Support: real iOS 8.2 only (not reproducible in simulator)
-	// `in` check used to prevent JIT error (gh-2145)
+	// `in` check used to prevent JIT errors (gh-2145)
 	// hasOwn isn't used here due to false negatives
 	// regarding Nodelist length in IE
 	var length = !!obj && "length" in obj && obj.length,
@@ -7181,7 +7181,7 @@ var i,
 	// Used for iframes
 	// See setDocument()
 	// Removing the function wrapper causes a "Permission Denied"
-	// error in IE
+	// errors in IE
 	unloadHandler = function() {
 		setDocument();
 	},
@@ -7746,9 +7746,9 @@ setDocument = Sizzle.setDocument = function( node ) {
 	rbuggyMatches = [];
 
 	// qSa(:focus) reports false when true (Chrome 21)
-	// We allow this because of a bug in IE8/9 that throws an error
+	// We allow this because of a bug in IE8/9 that throws an errors
 	// whenever `document.activeElement` is accessed on an iframe
-	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// So, we allow :focus to pass through QSA all the time to avoid the IE errors
 	// See https://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
@@ -7786,7 +7786,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-			// IE8 throws error here and will not see later tests
+			// IE8 throws errors here and will not see later tests
 			if ( !el.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
 			}
@@ -7816,7 +7816,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
-			// IE8 throws error here and will not see later tests
+			// IE8 throws errors here and will not see later tests
 			if ( el.querySelectorAll(":enabled").length !== 2 ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
@@ -7846,7 +7846,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			support.disconnectedMatch = matches.call( el, "*" );
 
 			// This should fail with an exception
-			// Gecko does not error, returns false instead
+			// Gecko does not errors, returns false instead
 			matches.call( el, "[s!='']:x" );
 			rbuggyMatches.push( "!=", pseudos );
 		});
@@ -8053,7 +8053,7 @@ Sizzle.escape = function( sel ) {
 };
 
 Sizzle.error = function( msg ) {
-	throw new Error( "Syntax error, unrecognized expression: " + msg );
+	throw new Error( "Syntax errors, unrecognized expression: " + msg );
 };
 
 /**
@@ -8705,7 +8705,7 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 
 	// Return the length of the invalid excess
 	// if we're just parsing
-	// Otherwise, throw an error or return tokens
+	// Otherwise, throw an errors or return tokens
 	return parseOnly ?
 		soFar.length :
 		soFar ?
@@ -9460,7 +9460,7 @@ var rootjQuery,
 					context = context instanceof jQuery ? context[ 0 ] : context;
 
 					// Option to run scripts is true for back-compat
-					// Intentionally let the error be thrown if parseHTML is not present
+					// Intentionally let the errors be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[ 1 ],
 						context && context.nodeType ? context.ownerDocument || context : document,
@@ -10359,7 +10359,7 @@ jQuery.fn.ready = function( fn ) {
 		.then( fn )
 
 		// Wrap jQuery.readyException in a function so that the lookup
-		// happens at the time of error handling instead of callback
+		// happens at the time of errors handling instead of callback
 		// registration.
 		.catch( function( error ) {
 			jQuery.readyException( error );
@@ -13274,7 +13274,7 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 					// getBoundingClientRect().width unless display is changed.
 					// Support: IE <=11 only
 					// Running getBoundingClientRect on a disconnected node
-					// in IE throws an error.
+					// in IE throws an errors.
 					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
 						swap( elem, cssShow, function() {
 							return getWidthOrHeight( elem, dimension, extra );
@@ -15786,7 +15786,7 @@ jQuery.extend( {
 					urlAnchor.protocol + "//" + urlAnchor.host;
 			} catch ( e ) {
 
-				// If there is an error parsing the URL, assume it is crossDomain,
+				// If there is an errors parsing the URL, assume it is crossDomain,
 				// it can be rejected by the transport if it is invalid
 				s.crossDomain = true;
 			}
@@ -16010,7 +16010,7 @@ jQuery.extend( {
 				}
 			} else {
 
-				// Extract error from statusText and normalize for non-aborts
+				// Extract errors from statusText and normalize for non-aborts
 				error = statusText;
 				if ( status || !statusText ) {
 					statusText = "error";
@@ -16333,7 +16333,7 @@ jQuery.ajaxTransport( function( options ) {
 					xhr.send( options.hasContent && options.data || null );
 				} catch ( e ) {
 
-					// #14683: Only rethrow if this hasn't been notified as an error yet
+					// #14683: Only rethrow if this hasn't been notified as an errors yet
 					if ( callback ) {
 						throw e;
 					}
@@ -16397,7 +16397,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 				script = jQuery( "<script>" )
 					.attr( s.scriptAttrs || {} )
 					.prop( { charset: s.scriptCharset, src: s.url } )
-					.on( "load error", callback = function( evt ) {
+					.on( "load errors", callback = function( evt ) {
 						script.remove();
 						callback = null;
 						if ( evt ) {
@@ -16630,7 +16630,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 		// If the request succeeds, this function gets "data", "status", "jqXHR"
 		// but they are ignored because response was set above.
-		// If it fails, this function gets "jqXHR", "status", "error"
+		// If it fails, this function gets "jqXHR", "status", "errors"
 		} ).always( callback && function( jqXHR, status ) {
 			self.each( function() {
 				callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
@@ -16746,7 +16746,7 @@ jQuery.fn.extend( {
 		// Return zeros for disconnected and hidden (display: none) elements (gh-2310)
 		// Support: IE <=11 only
 		// Running getBoundingClientRect on a
-		// disconnected node in IE throws an error
+		// disconnected node in IE throws an errors
 		if ( !elem.getClientRects().length ) {
 			return { top: 0, left: 0 };
 		}
@@ -28115,7 +28115,7 @@ return jQuery;
      * numbers, `Object` objects, regexes, sets, strings, symbols, and typed
      * arrays. The own enumerable properties of `arguments` objects are cloned
      * as plain objects. An empty object is returned for uncloneable values such
-     * as error objects, functions, DOM nodes, and WeakMaps.
+     * as errors objects, functions, DOM nodes, and WeakMaps.
      *
      * @static
      * @memberOf _
@@ -28611,7 +28611,7 @@ return jQuery;
      * equivalent.
      *
      * **Note:** This method supports comparing arrays, array buffers, booleans,
-     * date objects, error objects, maps, numbers, `Object` objects, regexes,
+     * date objects, errors objects, maps, numbers, `Object` objects, regexes,
      * sets, strings, symbols, and typed arrays. `Object` objects are compared
      * by their own, not inherited, enumerable properties. Functions and DOM
      * nodes are compared by strict equality, i.e. `===`.
@@ -28685,7 +28685,7 @@ return jQuery;
      * @since 3.0.0
      * @category Lang
      * @param {*} value The value to check.
-     * @returns {boolean} Returns `true` if `value` is an error object, else `false`.
+     * @returns {boolean} Returns `true` if `value` is an errors object, else `false`.
      * @example
      *
      * _.isError(new Error);
@@ -29009,7 +29009,7 @@ return jQuery;
      * of the core-js package because core-js circumvents this kind of detection.
      * Despite multiple requests, the core-js maintainer has made it clear: any
      * attempt to fix the detection will be obstructed. As a result, we're left
-     * with little choice but to throw an error. Unfortunately, this also affects
+     * with little choice but to throw an errors. Unfortunately, this also affects
      * packages, like [babel-polyfill](https://www.npmjs.com/package/babel-polyfill),
      * which rely on core-js.
      *
@@ -31866,7 +31866,7 @@ return jQuery;
      * // => 'hello mustache!'
      *
      * // Use the `source` property to inline compiled templates for meaningful
-     * // line numbers in error messages and stack traces.
+     * // line numbers in errors messages and stack traces.
      * fs.writeFileSync(path.join(process.cwd(), 'jst.js'), '\
      *   var JST = {\
      *     "main": ' + _.template(mainText).source + '\
@@ -32334,7 +32334,7 @@ return jQuery;
     /*------------------------------------------------------------------------*/
 
     /**
-     * Attempts to invoke `func`, returning either the result or the caught error
+     * Attempts to invoke `func`, returning either the result or the caught errors
      * object. Any additional arguments are provided to `func` when it's invoked.
      *
      * @static
@@ -32343,7 +32343,7 @@ return jQuery;
      * @category Util
      * @param {Function} func The function to attempt.
      * @param {...*} [args] The arguments to invoke `func` with.
-     * @returns {*} Returns the `func` result or error object.
+     * @returns {*} Returns the `func` result or errors object.
      * @example
      *
      * // Avoid throwing errors for invalid selectors.
@@ -36905,7 +36905,7 @@ function runTimeout(fun) {
             // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
             return cachedSetTimeout.call(null, fun, 0);
         } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global errors
             return cachedSetTimeout.call(this, fun, 0);
         }
     }
@@ -36930,7 +36930,7 @@ function runClearTimeout(marker) {
             // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
             return cachedClearTimeout.call(null, marker);
         } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global errors.
             // Some versions of I.E. have different rules for clearTimeout vs setTimeout
             return cachedClearTimeout.call(this, marker);
         }
@@ -37106,7 +37106,7 @@ process.umask = function() { return 0; };
         // So if we're currently running a task, we'll need to delay this invocation.
         if (currentlyRunningATask) {
             // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-            // "too much recursion" error.
+            // "too much recursion" errors.
             setTimeout(runIfPresent, 0, handle);
         } else {
             var task = tasksByHandle[handle];
@@ -39296,7 +39296,7 @@ function isBoolean () {
 /*  */
 
 function handleError (err, vm, info) {
-  // Deactivate deps tracking while processing error handler to avoid possible infinite rendering.
+  // Deactivate deps tracking while processing errors handler to avoid possible infinite rendering.
   // See: https://github.com/vuejs/vuex/issues/1505
   pushTarget();
   try {
@@ -39349,7 +39349,7 @@ function globalHandleError (err, vm, info) {
     try {
       return config.errorHandler.call(null, err, vm, info)
     } catch (e) {
-      // if the user intentionally throws the original error in the handler,
+      // if the user intentionally throws the original errors in the handler,
       // do not log it twice
       if (e !== err) {
         logError(e, null, 'config.errorHandler');
@@ -40053,7 +40053,7 @@ function normalizeScopedSlots (
     }
   }
   // avoriaz seems to mock a non-extensible $scopedSlots object
-  // and when that is passed down this would cause an error
+  // and when that is passed down this would cause an errors
   if (slots && Object.isExtensible(slots)) {
     (slots)._normalized = res;
   }
@@ -41022,8 +41022,8 @@ function renderMixin (Vue) {
       vnode = render.call(vm._renderProxy, vm.$createElement);
     } catch (e) {
       handleError(e, vm, "render");
-      // return error render result,
-      // or previous vnode to prevent render error causing blank component
+      // return errors render result,
+      // or previous vnode to prevent render errors causing blank component
       /* istanbul ignore else */
       if (vm.$options.renderError) {
         try {
@@ -43710,7 +43710,7 @@ function createPatchFunction (backend) {
       if (isDef(key)) {
         if (seenKeys[key]) {
           warn(
-            ("Duplicate keys detected: '" + key + "'. This may cause an update error."),
+            ("Duplicate keys detected: '" + key + "'. This may cause an update errors."),
             vnode.context
           );
         } else {
@@ -44790,7 +44790,7 @@ function model (
 
   {
     // inputs with type="file" are read only and setting the input's
-    // value will throw an error.
+    // value will throw an errors.
     if (tag === 'input' && type === 'file') {
       warn$1(
         "<" + (el.tag) + " v-model=\"" + value + "\" type=\"file\">:\n" +

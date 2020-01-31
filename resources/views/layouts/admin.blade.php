@@ -63,6 +63,10 @@
                         </a>
                     </div>
                 </li>
+                <li class="nav-item px-2">
+                    <a href="{{route('categories.index')}}"
+                       class="nav-link {{ request()->route()->getName() === 'categories.index' ? 'active'  : '' }} {{ request()->route()->getName() === 'categories.edit' ? 'active'  : '' }}">Categories</a>
+                </li>
                 <li class="nav-item px-2 dropdown">
                     <a href="{{route('users.index')}}"
                        class="nav-link dropdown-toggle {{request()->route()->getName() === 'users.index' ? 'active' : ''}} {{request()->route()->getName() === 'users.create' ? 'active' : ''}} {{request()->route()->getName() === 'users.create' ? 'active' : ''}} {{request()->route()->getName() === 'users.edit' ? 'active' : ''}}"

@@ -8,6 +8,7 @@
     <meta property="fb:app_id" content="712150002641494"/>
     <script src="https://kit.fontawesome.com/6e0b74ce89.js" crossorigin="anonymous"></script>
 {{--    <script src="{{ asset('js/app.js')}}" defer></script>--}}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/favicon.png')}}">
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     @yield('title')
@@ -53,21 +54,25 @@
             <a class="ml-auto" href="https://instagram.com">
                 <i class="fab fa-instagram fa-2x"></i>
             </a>
-            <form class="form-inline ml-auto text-white">
-                <input type="text" class="form-control mr-1" placeholder="Søg">
-                <button type="submit" class="btn text-white">
-                    <i class="fas fa-search fa-2x"></i>
-                </button>
-            </form>
+                {!! Form::open(['method'=>'POST', 'action'=>'HomeController@search', 'class' => 'form-inline ml-auto text-white']) !!}
+                @csrf <!-- {{ csrf_field() }} -->
+                    <div class="form-group">
+                        {!! Form::text('search', null, ['class'=>'form-control', 'placeholder' => 'Søg']) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::button('<i class="fas fa-search fa-2x"></i>', ['type'=> 'submit' ,'class'=>'btn text-white']) !!}
+                    </div>
+            {!! Form::close() !!}
+
         </div>
     </div>
 </nav>
 @yield('content')
-<footer id="main-footer" class="text-center p-4 mt-3 ">
+<footer id="main-footer" class="text-center footer p-4 mt-3 ">
     <div class="container">
         <div class="row">
             <div class="col">
-                <p>Copyright &copy; <span id="year"></span> Rabona.dk</p>
+                <p>Copyright &copy; <span id="year">2020</span> Rabona.dk</p>
                 <small>CMS & Design by Mikail Kocak</small>
             </div>
         </div>
@@ -76,8 +81,6 @@
 <script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
-
-
 </script>
 @yield('scripts')
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
